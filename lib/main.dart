@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(home: MyApp()));
+  runApp(MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   TextStyle textStyle() {
     return TextStyle(
-      fontSize: 40,
-      color: Colors.black,
-      fontStyle: FontStyle.italic,
-      fontWeight: FontWeight.bold,
-      decoration: TextDecoration.underline,
+      fontSize: 25,
+      color: Colors.purple
     );
   }
+
+  final TextEditingController _price = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +23,11 @@ class MyApp extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.only(left: 10, top: 10),
-        child: Row(
-          children: [
-            Expanded(
-              child: Image.network(
-                'https://picsum.photos/250?image=9',
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(width: 10), // Espaço entre as imagens
-            Expanded(
-              child: Image.asset("images/laptop.jpg", fit: BoxFit.cover),
-            ),
-          ],
+        child: TextField(
+          controller: _price,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(labelText: "Preço"),
+          style: textStyle(),
         ),
       ),
     );
