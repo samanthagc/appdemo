@@ -9,11 +9,11 @@ class MyApp extends StatelessWidget {
 
   TextStyle textStyle() {
     return TextStyle(
-      fontSize: 40, 
+      fontSize: 40,
       color: Colors.black,
       fontStyle: FontStyle.italic,
       fontWeight: FontWeight.bold,
-      decoration: TextDecoration.underline
+      decoration: TextDecoration.underline,
     );
   }
 
@@ -21,23 +21,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Primeiro App')),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 134, 139, 179),
-              border: Border.all(color: const Color.fromARGB(255, 48, 47, 94), width: 2),
-              borderRadius: BorderRadius.circular(10)
+      body: Container(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.only(left: 10, top: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Image.network(
+                'https://picsum.photos/250?image=9',
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Text('Texto 1', style: textStyle())
-          ),
-          ElevatedButton(onPressed: () {}, child: Text('Botão')),
+            SizedBox(width: 10), // Espaço entre as imagens
+            Expanded(
+              child: Image.asset("images/laptop.jpg", fit: BoxFit.cover),
+            ),
           ],
+        ),
       ),
-
-    ); 
+    );
   }
 }
